@@ -1,0 +1,27 @@
+{{!-- <div class="bk-weekrow"> --}}
+{{#each date in row.dates}}
+    {{ember-cal-cell
+        date=date
+        curyear=curyear
+        curmonth=curmonth
+        dateClicked='dateClicked'}}
+{{/each}}
+
+<div class="bk-weekrow-lanes">
+{{#each lane in row.events.layout}}
+    <div class="lane clearfix">
+    {{#each event in lane.events}}
+        {{ember-cal-event
+            lane=lane
+            event=event
+            lanestart=row.start
+            laneend=row.end
+            row=row
+            color=color
+            textcolor=textcolor
+            eventClicked='eventClicked'}}
+    {{/each}}
+    </div>
+{{/each}}
+</div>
+{{!-- </div class="bk-weekrow"> --}}

@@ -1,0 +1,1 @@
+coffee --compile --output ./ --bare --no-header --watch src

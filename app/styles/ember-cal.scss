@@ -1,0 +1,196 @@
+$bklinecolor: #E0E0E0;
+$todaybgcolor: darken(rgb(255, 242, 242), 1%);
+$weekendbgcolor: lighten(rgb(242, 242, 242), 1%);
+
+$eventfontsize: 12px;
+
+$eventheight: floor($eventfontsize * 1.6);
+$eventmarginbottom: 1px;
+$eventoutsideheight: $eventheight + $eventmarginbottom;
+
+$daynamesrowheight: 20px;
+$daynamesrowmarginbottom: 3px;
+$daynamesrowoutsideheight: $daynamesrowheight + $daynamesrowmarginbottom;
+
+$weekrowminheight: $daynamesrowheight + (4 * $eventoutsideheight);
+$weekrowpaddingbottom: 6px;
+
+$cellmarginhorizontal: 3px;
+
+$prefix: "bk-";
+
+@mixin ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.#{$prefix}calendar {
+
+    &,
+    & .#{$prefix}surface,
+    & .#{$prefix}daynames {
+        width: 100%;
+    }
+
+    .#{$prefix}header {
+        margin-bottom: 20px;
+
+        .#{$prefix}header-title,
+        .#{$prefix}header-controls {
+            display: inline-block;
+            vertical-align: middle;
+            float: none;
+        }
+    }
+
+    .#{$prefix}weekrow {
+        position: relative;
+        width: 100%;
+    }
+
+    .#{$prefix}weekrow-lanes {
+        position: relative;
+        left: 0;
+        width: 100%;
+    }
+
+    .#{$prefix}dayofmonth {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding-right: 2px;
+    }
+
+    .#{$prefix}othermonth .#{$prefix}dayofmonth {
+        opacity: 0.3;
+    }
+
+    .#{$prefix}event {
+        background-color: #DDD;
+        color: #333;
+        position: absolute;
+        z-index: 999;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 5px;
+        height: $eventheight;
+        line-height: $eventheight;
+        font-size: $eventfontsize;
+        cursor: pointer;
+
+        @include ellipsis();
+
+        &:hover,
+        &.hover,
+        &.active {
+            background-color: #888;
+            color: white;
+        }
+
+        &.#{$prefix}truncated-left {
+            border-left: 2px dotted white;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &.#{$prefix}truncated-right {
+            border-right: 2px dotted $weekendbgcolor;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    .#{$prefix}daynames div {
+        text-align: center;
+        @include ellipsis();
+    }
+
+    .#{$prefix}dayofmonth {
+        @include ellipsis();
+    }
+
+    .#{$prefix}daynames div,
+    .#{$prefix}daycell {
+        width: calc(#{percentage(1/7)} - #{$cellmarginhorizontal * 2}); /* 100% / 7 */
+        float: left;
+        position: relative;
+        margin: 0 $cellmarginhorizontal;
+    }
+
+    .#{$prefix}daycell {
+        border-top: 1px solid $bklinecolor;
+
+        &.#{$prefix}today {
+            background-color: $todaybgcolor;
+        }
+
+        &.#{$prefix}day-sat,
+        &.#{$prefix}day-sun {
+            background-color: $weekendbgcolor;
+            margin: 0;
+            width: percentage(1/7);
+        }
+
+        &.#{$prefix}day-sun {
+            width: calc(#{percentage(1/7)} - #{$cellmarginhorizontal});
+        }
+    }
+
+    .#{$prefix}weekrow,
+    .#{$prefix}daycell {
+        min-height: $weekrowminheight;
+    }
+
+    // Event durations
+
+    // Not-all-day event (duration 0)
+    .#{$prefix}duration-0 {
+        width: calc(#{percentage(1/7)} - 1px - #{$cellmarginhorizontal * 2});
+        background-color: transparent;
+        padding-left: 0px;
+    }
+
+    .#{$prefix}duration-0:before {
+        display: inline-block;
+        content: "•";
+        margin-right: 2px;
+        margin-left: 2px;
+        font-weight: bold;
+        line-height: $eventheight;
+    }
+
+    .#{$prefix}duration-0.active:before,
+    .#{$prefix}duration-0.hover:before {
+        color: white;
+    }
+
+    // All-day events
+    @for $i from 1 through 7 {
+        .#{$prefix}duration-#{$i} {
+            width: calc(#{percentage($i / 7)} - 1px - #{$cellmarginhorizontal * 2});
+        }
+    }
+
+    // Event offsets
+
+    @for $i from 0 through 6 {
+        .#{$prefix}offset-#{$i} {
+            left: calc(#{percentage($i / 7)} + #{$cellmarginhorizontal});
+        }
+    }
+
+    // Week row heights
+
+    @for $i from 0 through 30 {
+        .#{$prefix}weekrow-height-#{$i} {
+            &, & .#{$prefix}daycell {
+                height: $daynamesrowoutsideheight + ($i * $eventoutsideheight) + $weekrowpaddingbottom;
+            }
+        }
+
+        .#{$prefix}lane-#{$i} {
+            top: $daynamesrowoutsideheight + (($i - 1) * $eventoutsideheight);
+        }
+    }
+}
