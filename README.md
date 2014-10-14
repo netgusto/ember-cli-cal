@@ -1,6 +1,11 @@
-# Ember-cal
+# ember-cli-cal
 
-This README outlines the details of collaborating on this Ember addon.
+Calendar component for ember-cli
+
+See https://github.com/netgusto/ember-cli-cal-demoapp for implementation example.
+
+![](http://netgusto.com/images/ember-cal.png)
+
 
 ## Installation
 
