@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-cal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,7 +10,7 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "https://github.com/netgusto/ember-cli-cal-demoapp",
+  "repository": "https://github.com/netgusto/ember-cli-cal",
   "engines": {
     "node": ">= 0.10.0"
   },
