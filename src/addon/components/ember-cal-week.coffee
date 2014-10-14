@@ -13,10 +13,8 @@ component = Ember.Component.extend
     ).property 'row.events.layout.@each'
 
     actions:
-        eventClicked: (event) ->
-            @sendAction('eventClicked', event)
+        eventClicked: (event) -> @sendAction('eventClicked', event)
 
-        dateClicked: (date) ->
-            @sendAction('dateClicked', date)
+        dateClicked: (date) -> @sendAction('dateClicked', date)
 
 `export default component`

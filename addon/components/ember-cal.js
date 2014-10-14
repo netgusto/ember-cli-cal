@@ -42,17 +42,22 @@ component = Ember.Component.extend({
   isPresentView: (function() {
     return this.get('curyear') === moment().year() && this.get('curmonth') === (moment().month() + 1);
   }).property('curyear', 'curmonth'),
-  debugVisualization: (function() {
-    var layoutsbyweek, res, week, _i, _len;
-    res = [];
-    layoutsbyweek = CalendarTools.getLayoutsByWeek(this.get('events'), this.get('viewstart').clone(), this.get('viewend').clone());
-    for (_i = 0, _len = layoutsbyweek.length; _i < _len; _i++) {
-      week = layoutsbyweek[_i];
-      res.push(week['start'].toString() + ' => ' + week['end'].toString());
-      res.push(CalendarTools.visualizeLayout(week.layout, week['start'].clone(), week['end'].clone()));
-    }
-    return res.join('\n');
-  }).property('events.@each', 'viewstart', 'viewend'),
+
+  /*
+  debugVisualization: (->
+       * Debug lanes, week by week
+  
+      res = []
+      layoutsbyweek = CalendarTools.getLayoutsByWeek(@get('events'), @get('viewstart').clone(), @get('viewend').clone())
+      
+      for week in layoutsbyweek
+          res.push week['start'].toString() + ' => ' + week['end'].toString()
+          res.push CalendarTools.visualizeLayout(week.layout, week['start'].clone(), week['end'].clone())
+  
+      res.join('\n')
+  
+  ).property 'events.@each', 'viewstart', 'viewend'
+   */
   rows: (function() {
     var col, date, layoutsbyweek, rows, weekdates, weeklayout, _i, _j, _len;
     date = this.get('viewstart').clone();

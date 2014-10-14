@@ -53,6 +53,7 @@ component = Ember.Component.extend
         return @get('curyear') == moment().year() and @get('curmonth') == (moment().month() + 1)
     ).property 'curyear', 'curmonth'
 
+    ###
     debugVisualization: (->
         # Debug lanes, week by week
 
@@ -66,6 +67,7 @@ component = Ember.Component.extend
         res.join('\n')
 
     ).property 'events.@each', 'viewstart', 'viewend'
+    ###
 
     rows: (->
 
@@ -138,8 +140,7 @@ component = Ember.Component.extend
             same = false
 
             if @get('_selectedEvent')
-                if event == @get('_selectedEvent')
-                    same = true
+                same = true if event == @get('_selectedEvent')
 
                 @sendAction('eventUnselected', event)
                 @set('_selectedEvent', null)
@@ -157,8 +158,7 @@ component = Ember.Component.extend
             same = false
 
             if @get('_selectedDate')
-                if date == @get('_selectedDate')
-                    same = true
+                same = true if date == @get('_selectedDate')
 
                 @sendAction('dateUnselected', date)
                 @set('_selectedDate', null)

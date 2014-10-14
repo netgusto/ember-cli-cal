@@ -25,23 +25,43 @@ $prefix: "bk-";
     white-space: nowrap; 
 }
 
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.#{$prefix}clearfix {
+    @include clearfix();
+}
+
+
+.#{$prefix}header-title,
+.#{$prefix}header-controls {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 .#{$prefix}calendar {
+
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+
+    &, & * {
+        box-sizing: border-box;
+    }
 
     &,
     & .#{$prefix}surface,
     & .#{$prefix}daynames {
         width: 100%;
-    }
-
-    .#{$prefix}header {
-        margin-bottom: 20px;
-
-        .#{$prefix}header-title,
-        .#{$prefix}header-controls {
-            display: inline-block;
-            vertical-align: middle;
-            float: none;
-        }
     }
 
     .#{$prefix}weekrow {

@@ -35,7 +35,6 @@ component = Ember.Component.extend
         return @get('date').format('MMMM') if @get('dayofmonth') == 1
     ).property('date')
 
-    click: () ->
-        @sendAction('dateClicked', @get('date'))
+    click: () -> @sendAction('dateClicked', @get('date'))
 
 `export default component`

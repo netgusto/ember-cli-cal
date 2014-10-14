@@ -11,11 +11,12 @@ component = Ember.Component.extend
     style: (->
         return 'background-color: ' + @get('color') + '; color: ' + @get('textcolor') if (@get('hover') or @get('active'))
         return 'background-color: ' + @get('fadedcolor') if @get('visibleLength') > 0
-    ).property 'color', 'textcolor', 'active', 'hover'
+    ).property 'active', 'hover'
 
     event: null
     lane: null
     row: null
+    fadedcolor: null
 
     active: Ember.computed.alias('event.active')
     hover: Ember.computed.alias('event.hover')
@@ -45,13 +46,10 @@ component = Ember.Component.extend
 
     ).on 'init'
 
-    click: () ->
-        @sendAction('eventClicked', @get('event'))
+    click: () -> @sendAction('eventClicked', @get('event'))
 
-    mouseEnter: () ->
-        @get('event').set('hover', true)
+    mouseEnter: () -> @get('event').set('hover', true)
 
-    mouseLeave: () ->
-        @get('event').set('hover', false)
+    mouseLeave: () -> @get('event').set('hover', false)
 
 `export default component`

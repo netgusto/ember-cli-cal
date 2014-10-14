@@ -14,10 +14,11 @@ component = Ember.Component.extend({
     if (this.get('visibleLength') > 0) {
       return 'background-color: ' + this.get('fadedcolor');
     }
-  }).property('color', 'textcolor', 'active', 'hover'),
+  }).property('active', 'hover'),
   event: null,
   lane: null,
   row: null,
+  fadedcolor: null,
   active: Ember.computed.alias('event.active'),
   hover: Ember.computed.alias('event.hover'),
   visibleLength: (function() {
