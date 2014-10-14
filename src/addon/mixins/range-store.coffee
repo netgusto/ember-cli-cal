@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import CalendarTools from 'ember-cal/utilities/calendartools'`
+`import CalendarTools from 'ember-cli-cal/utilities/calendartools'`
 
 component = Ember.Mixin.create
     

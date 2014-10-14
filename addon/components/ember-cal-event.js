@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ColorTools from 'ember-cal/utilities/colortools';
+import ColorTools from 'ember-cli-cal/utilities/colortools';
 var component;
 
 component = Ember.Component.extend({

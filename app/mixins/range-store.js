@@ -1,4 +1,4 @@
 import Ember from 'ember';
-import mixin from 'ember-cal/mixins/range-store';
+import mixin from 'ember-cli-cal/mixins/range-store';
 
 export default mixin;

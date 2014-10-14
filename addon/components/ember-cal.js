@@ -1,7 +1,7 @@
 
 /* global moment */
 import Ember from 'ember';
-import CalendarTools from 'ember-cal/utilities/calendartools';
+import CalendarTools from 'ember-cli-cal/utilities/calendartools';
 var component;
 
 component = Ember.Component.extend({
