@@ -22,7 +22,7 @@ component = Ember.Component.extend({
     fadedColor = ColorTools.shadeColor(this.get('color'), 0.7);
     uniqid = 'bk-uniqid-' + Date.now() + Math.floor(Math.random() * 100000);
     this.set('classNames', [uniqid]);
-    return this.set('calendarStyleTag', '<style type="text/css"> .' + uniqid + ' .bk-calendar .bk-event { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0 { background-color: transparent; } .' + uniqid + ' .bk-calendar .bk-event.hover, .' + uniqid + ' .bk-calendar .bk-event.active { background-color: ' + this.get('color') + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0:before { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.active.bk-duration-0:before, .' + uniqid + ' .bk-calendar .bk-event.hover.bk-duration-0:before { background-color: ' + this.get('textcolor') + '; } </style>');
+    return this.set('calendarStyleTag', '<style type="text/css"> .' + uniqid + ' .bk-calendar .bk-event { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0 { background-color: transparent; } .' + uniqid + ' .bk-calendar .bk-event.hover, .' + uniqid + ' .bk-calendar .bk-event.active { background-color: ' + this.get('color') + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0:before { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.active.bk-duration-0:before, .' + uniqid + ' .bk-calendar .bk-event.hover.bk-duration-0:before { background-color: white; } </style>');
   }).on('init'),
   firstdayofcurmonth: (function() {
     var pad;

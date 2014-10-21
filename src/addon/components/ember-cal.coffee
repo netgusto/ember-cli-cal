@@ -53,7 +53,7 @@ component = Ember.Component.extend
 
             .' + uniqid + ' .bk-calendar .bk-event.active.bk-duration-0:before,
             .' + uniqid + ' .bk-calendar .bk-event.hover.bk-duration-0:before {
-                background-color: ' + @get('textcolor') + ';
+                background-color: white;
             }
         </style>');
 
