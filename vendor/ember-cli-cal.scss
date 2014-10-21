@@ -173,11 +173,13 @@ $prefix: "bk-";
 
     .#{$prefix}duration-0:before {
         display: inline-block;
-        content: "•";
-        margin-right: 2px;
-        margin-left: 2px;
-        font-weight: bold;
-        line-height: $eventheight;
+        content: " ";
+        margin-left: 4px;
+        margin-right: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background-color: orange;
     }
 
     .#{$prefix}duration-0.active:before,

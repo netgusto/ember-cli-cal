@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .bk-clearfix:before, .bk-clearfix:after {
   content: " ";
   display: table; }
@@ -75,7 +74,7 @@
     position: relative;
     margin: 0 3px; }
   .bk-calendar .bk-daycell {
-    border-top: 1px solid #E0E0E0; }
+    border-top: 1px solid #e0e0e0; }
     .bk-calendar .bk-daycell.bk-today {
       background-color: #ffeded; }
     .bk-calendar .bk-daycell.bk-day-sat, .bk-calendar .bk-daycell.bk-day-sun {
@@ -93,11 +92,13 @@
     padding-left: 0px; }
   .bk-calendar .bk-duration-0:before {
     display: inline-block;
-    content: "•";
-    margin-right: 2px;
-    margin-left: 2px;
-    font-weight: bold;
-    line-height: 19px; }
+    content: " ";
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: orange; }
   .bk-calendar .bk-duration-0.active:before,
   .bk-calendar .bk-duration-0.hover:before {
     color: white; }

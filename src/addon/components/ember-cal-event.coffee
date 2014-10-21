@@ -1,5 +1,4 @@
 `import Ember from 'ember'`
-`import ColorTools from 'ember-cli-cal/utilities/colortools'`
 
 component = Ember.Component.extend
 
@@ -7,16 +6,9 @@ component = Ember.Component.extend
     classNames: ['bk-event']
     classNameBindings: ['active', 'hover']
 
-    attributeBindings: ['style']
-    style: (->
-        return 'background-color: ' + @get('color') + '; color: ' + @get('textcolor') if (@get('hover') or @get('active'))
-        return 'background-color: ' + @get('fadedcolor') if @get('visibleLength') > 0
-    ).property 'active', 'hover'
-
     event: null
     lane: null
     row: null
-    fadedcolor: null
 
     active: Ember.computed.alias('event.active')
     hover: Ember.computed.alias('event.hover')
@@ -41,8 +33,6 @@ component = Ember.Component.extend
             classNames.push('bk-truncated-right')
 
         @get('classNames').pushObjects(classNames)
-
-        @set('fadedcolor', ColorTools.shadeColor(@get('color'), 0.7))
 
     ).on 'init'
 

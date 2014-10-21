@@ -1,24 +1,13 @@
 import Ember from 'ember';
-import ColorTools from 'ember-cli-cal/utilities/colortools';
 var component;
 
 component = Ember.Component.extend({
   tagName: 'div',
   classNames: ['bk-event'],
   classNameBindings: ['active', 'hover'],
-  attributeBindings: ['style'],
-  style: (function() {
-    if (this.get('hover') || this.get('active')) {
-      return 'background-color: ' + this.get('color') + '; color: ' + this.get('textcolor');
-    }
-    if (this.get('visibleLength') > 0) {
-      return 'background-color: ' + this.get('fadedcolor');
-    }
-  }).property('active', 'hover'),
   event: null,
   lane: null,
   row: null,
-  fadedcolor: null,
   active: Ember.computed.alias('event.active'),
   hover: Ember.computed.alias('event.hover'),
   visibleLength: (function() {
@@ -33,8 +22,7 @@ component = Ember.Component.extend({
     if (this.get('event').isTruncatedRight(this.get('row.events.start'), this.get('row.events.end'))) {
       classNames.push('bk-truncated-right');
     }
-    this.get('classNames').pushObjects(classNames);
-    return this.set('fadedcolor', ColorTools.shadeColor(this.get('color'), 0.7));
+    return this.get('classNames').pushObjects(classNames);
   }).on('init'),
   click: function() {
     return this.sendAction('eventClicked', this.get('event'));

@@ -2,6 +2,7 @@
 /* global moment */
 import Ember from 'ember';
 import CalendarTools from 'ember-cli-cal/utilities/calendartools';
+import ColorTools from 'ember-cli-cal/utilities/colortools';
 var component;
 
 component = Ember.Component.extend({
@@ -9,13 +10,19 @@ component = Ember.Component.extend({
   events: null,
   color: null,
   textcolor: null,
+  calendarStyleTag: null,
   curmonth: null,
   curyear: null,
   _selectedEvent: null,
   _selectedDate: null,
   _setup: (function() {
+    var fadedColor, uniqid;
     this.set('component', this);
-    return this.displayMonthForYear(moment().month() + 1, moment().year());
+    this.displayMonthForYear(moment().month() + 1, moment().year());
+    fadedColor = ColorTools.shadeColor(this.get('color'), 0.7);
+    uniqid = 'bk-uniqid-' + Date.now() + Math.floor(Math.random() * 100000);
+    this.set('classNames', [uniqid]);
+    return this.set('calendarStyleTag', '<style type="text/css"> .' + uniqid + ' .bk-calendar .bk-event { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0 { background-color: transparent; } .' + uniqid + ' .bk-calendar .bk-event.hover, .' + uniqid + ' .bk-calendar .bk-event.active { background-color: ' + this.get('color') + '; } .' + uniqid + ' .bk-calendar .bk-event.bk-duration-0:before { background-color: ' + fadedColor + '; } .' + uniqid + ' .bk-calendar .bk-event.active.bk-duration-0:before, .' + uniqid + ' .bk-calendar .bk-event.hover.bk-duration-0:before { background-color: ' + this.get('textcolor') + '; } </style>');
   }).on('init'),
   firstdayofcurmonth: (function() {
     var pad;

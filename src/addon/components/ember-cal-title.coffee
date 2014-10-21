@@ -1,5 +1,3 @@
-### global moment ###
-
 `import Ember from 'ember'`
 
 component = Ember.Component.extend
